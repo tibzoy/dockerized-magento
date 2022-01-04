@@ -2,7 +2,7 @@ version: '2.1'
 services:
   db:
     hostname: db.magento2.docker
-    image: 'mariadb:10.1'
+    image: 'mariadb:10.4.22'
     environment:
       - MYSQL_ROOT_PASSWORD=magento2
       - MYSQL_DATABASE=magento2
@@ -24,7 +24,7 @@ services:
           - db.magento2.docker
   redis:
     hostname: redis.magento2.docker
-    image: 'redis:5.0'
+    image: 'redis:6.0.16'
     volumes:
       - 'mymagento-magento-sync:/app:delegated'
     ports:
@@ -40,7 +40,7 @@ services:
           - redis.magento2.docker
   elasticsearch:
     hostname: elasticsearch.magento2.docker
-    image: 'magento/magento-cloud-docker-elasticsearch:6.5-1.1'
+    image: 'elasticsearch:7.9.3'
     networks:
       magento:
         aliases:
@@ -61,7 +61,7 @@ services:
         condition: service_healthy
   web:
     hostname: web.magento2.docker
-    image: 'magento/magento-cloud-docker-nginx:latest-1.1'
+    image: 'nginx:1.8.1'
     extends: generic
     ports:
       - '80:80'
@@ -81,7 +81,7 @@ services:
         condition: service_started
   varnish:
     hostname: varnish.magento2.docker
-    image: 'magento/magento-cloud-docker-varnish:6.2'
+    image: 'varnish:6.5.1'
     networks:
       magento:
         aliases:
@@ -91,7 +91,7 @@ services:
         condition: service_healthy
   tls:
     hostname: tls.magento2.docker
-    image: 'magento/magento-cloud-docker-tls:latest-1.1'
+    image: 'magento/magento-cloud-docker-tls:latest-1.2'
     ports:
       - '443:443'
     environment:
@@ -112,7 +112,7 @@ services:
       - 'PHP_EXTENSIONS=bcmath bz2 calendar exif gd gettext intl mysqli pcntl pdo_mysql soap sockets sysvmsg sysvsem sysvshm opcache zip sodium redis xsl blackfire'
   build:
     hostname: build.magento2.docker
-    image: 'magento/magento-cloud-docker-php:7.3-cli-1.1'
+    image: 'php:7.4.27-cli'
     extends: generic
     volumes:
       - 'mymagento-magento-sync:/app:delegated'
@@ -129,7 +129,7 @@ services:
         condition: service_healthy
   deploy:
     hostname: deploy.magento2.docker
-    image: 'magento/magento-cloud-docker-php:7.3-cli-1.1'
+    image: 'php:7.4.27-cli'
     extends: generic
     volumes:
       - 'mymagento-magento-sync:/app:delegated'
