@@ -15,10 +15,11 @@ RUN apt-get update && apt-get install -y \
   libzip-dev \
   wget \
   net-tools \
-  netcat
+  netcat \
+  libonig-dev
 
 RUN docker-php-ext-configure \
-  gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+  gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 
 RUN docker-php-ext-install \
   bcmath \
