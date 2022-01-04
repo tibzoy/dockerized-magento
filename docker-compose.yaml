@@ -45,6 +45,8 @@ services:
       magento:
         aliases:
           - elasticsearch.magento2.docker
+    environment:
+      - discovery.type=single-node
   fpm:
     hostname: fpm.magento2.docker
     #image: 'magento/magento-cloud-docker-php:7.3-fpm-1.1'
