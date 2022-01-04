@@ -143,7 +143,8 @@ services:
       redis:
         condition: service_healthy
       elasticsearch:
-        condition: service_healthy  fpm_xdebug:
+        condition: service_healthy
+  fpm_xdebug:
     hostname: fpm_xdebug.magento2.docker
     image: 'magento/magento-cloud-docker-php:7.3-fpm-1.1'
     extends: generic
