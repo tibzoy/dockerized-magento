@@ -58,9 +58,9 @@ services:
       magento:
         aliases:
           - fpm.magento2.docker
-    depends_on:
-      db:
-        condition: service_healthy
+#    depends_on:
+#      db:
+#        condition: service_healthy
   web:
     hostname: web.magento2.docker
     image: 'magento/magento-cloud-docker-nginx'
@@ -78,19 +78,19 @@ services:
       magento:
         aliases:
           - web.magento2.docker
-    depends_on:
-      fpm:
-        condition: service_started
+ #   depends_on:
+ #     fpm:
+ #       condition: service_started
   varnish:
     hostname: varnish.magento2.docker
-    image: 'varnish:6.5.1'
+    image: 'magento/magento-cloud-docker-varnish'
     networks:
       magento:
         aliases:
           - magento2.docker
-    depends_on:
-      web:
-        condition: service_healthy
+#    depends_on:
+#      web:
+#        condition: service_healthy
   tls:
     hostname: tls.magento2.docker
     image: 'magento/magento-cloud-docker-tls:latest-1.2'
@@ -102,9 +102,9 @@ services:
       magento:
         aliases:
           - tls.magento2.docker
-    depends_on:
-      varnish:
-        condition: service_started
+  #  depends_on:
+  #    varnish:
+  #      condition: service_started
   generic:
     hostname: generic.magento2.docker
     image: 'alpine:latest'
@@ -122,13 +122,13 @@ services:
       magento-build:
         aliases:
           - build.magento2.docker
-    depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+   # depends_on:
+   #   db:
+   #     condition: service_healthy
+   #   redis:
+   #     condition: service_healthy
+   #   elasticsearch:
+   #     condition: service_healthy
   deploy:
     hostname: deploy.magento2.docker
     image: 'php:7.4.27-cli'
@@ -139,13 +139,13 @@ services:
       magento:
         aliases:
           - deploy.magento2.docker
-    depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      elasticsearch:
-        condition: service_healthy
+   # depends_on:
+   #   db:
+   #     condition: service_healthy
+   #   redis:
+   #     condition: service_healthy
+   #   elasticsearch:
+   #     condition: service_healthy
   fpm_xdebug:
     hostname: fpm_xdebug.magento2.docker
     image: 'magento/magento-cloud-docker-php:7.3-fpm-1.1'
@@ -161,9 +161,9 @@ services:
       magento:
         aliases:
           - fpm_xdebug.magento2.docker
-    depends_on:
-      db:
-        condition: service_started
+   # depends_on:
+   #   db:
+   #     condition: service_started
   mailhog:
     hostname: mailhog.magento2.docker
     image: 'mailhog/mailhog:latest'
