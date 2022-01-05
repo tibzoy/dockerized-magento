@@ -5,7 +5,7 @@
 4. If you've reached the end of the tutorial, you should be able to browse a fresh Magento 2.4 install at http://local.magento.com
 
 
-My Steps (Magento Vanilla):
+# My Steps (Magento Vanilla):
 https://medium.com/@steve_64977/how-to-setup-a-docker-based-magento-2-3-local-development-environment-on-linux-in-no-time-57d28c7418fb
 
 1. Pulled docker images based on Magento requirements here: https://devdocs.magento.com/guides/v2.4/install-gde/system-requirements.html
