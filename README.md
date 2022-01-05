@@ -9,22 +9,23 @@
 https://medium.com/@steve_64977/how-to-setup-a-docker-based-magento-2-3-local-development-environment-on-linux-in-no-time-57d28c7418fb
 
 1. Pulled docker images based on Magento requirements here: https://devdocs.magento.com/guides/v2.4/install-gde/system-requirements.html
+``` docker pull [image] ```
 
 2. Change the approriate image versions of the service components in the docker-compose.yml.
 
 3. Created Dockerfile for PHP-FPM.
 
 4. Docker compose up.
+``` docker-compose -f docker-compose.yaml up --build -d ```
 
-5. Fix PHP-FPM error. 
-	Resolved By: No onigurumi https://github.com/docker-library/php/issues/880
-
+5. Fixed PHP-FPM error (No onigurumi package). (in case)
+	Resolved By:  https://github.com/docker-library/php/issues/880
 
 6. Install Magento
-	composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.3-p1
+	``` composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.3-p1 ```
 
-  	Error: The default website is not defined. Set the website and try again.
-  	Resolved: Deleted env.php
+  	If you met an error when running ```bin/magento setup:install``` : The default website is not defined. Set the website and try again.,
+  	resolved by deleted env.php.
 
   Used:
     bin/magento setup:install \
@@ -45,7 +46,7 @@ https://medium.com/@steve_64977/how-to-setup-a-docker-based-magento-2-3-local-de
     --elasticsearch-host=magento-local-env_elasticsearch_1
 
 7. Nginx serving default page
-  Resolved: Used image from https://hub.docker.com/r/magento/magento-cloud-docker-nginx 
+  Resolved by: Use image from https://hub.docker.com/r/magento/magento-cloud-docker-nginx 
 
 8. Disabled 2FA
 
