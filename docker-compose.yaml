@@ -63,7 +63,7 @@ services:
         condition: service_healthy
   web:
     hostname: web.magento2.docker
-    image: 'nginx:1.8.1'
+    image: 'magento/magento-cloud-docker-nginx'
     extends: generic
     ports:
       - '80:80'
