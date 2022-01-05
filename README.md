@@ -1,3 +1,10 @@
+# How to Run
+1. Follow this great guide by Steve Bien-Aime, step by step: https://medium.com/@steve_64977/how-to-setup-a-docker-based-magento-2-3-local-development-environment-on-linux-in-no-time-57d28c7418fb
+2. Clone this repo. ``` git clone https://github.com/tibzoy/dockerized-magento.git ```
+3. CD to dockerized-magento and run ``` docker-compose -f docker-compose.yaml up --build -d ```
+4. If you've reached the end of the tutorial, you should be able to browse a fresh Magento 2.4 install at http://local.magento.com
+
+
 My Steps (Magento Vanilla):
 https://medium.com/@steve_64977/how-to-setup-a-docker-based-magento-2-3-local-development-environment-on-linux-in-no-time-57d28c7418fb
 
