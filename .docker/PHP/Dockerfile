@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y \
   wget \
   net-tools \
   netcat \
-  libonig-dev
+  libonig-dev \
+  mariadb-client
 
 RUN docker-php-ext-configure \
   gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
